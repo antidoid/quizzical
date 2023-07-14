@@ -16,7 +16,7 @@ export default function App() {
       ) : (
         <>
           <h1 className="quiz--title">Quizzical</h1>
-          <p className="quiz--description">Let's see what you got</p>
+          <p className="quiz--description">Let's Play</p>
           <button className="quiz--start btn" onClick={loadNewGame}>
             Start quiz
           </button>
