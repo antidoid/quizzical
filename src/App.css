@@ -10,21 +10,20 @@ body {
   background-repeat: no-repeat, no-repeat;
   background-position: top right, bottom left;
   background-color: #f5f7fb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.quiz {
-  width: 70vw;
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+main {
+  width: min(720px, 100% - 16px);
+  margin: 0 auto;
 }
 
-.quiz--title {
+.welcome {
+  text-align: center;
+  position: relative;
+  top: 35vh;
+}
+
+.welcome--title {
   color: #293264;
   font-family: "Karla", sans-serif;
   font-size: 2rem;
@@ -32,11 +31,34 @@ body {
   margin-bottom: 7px;
 }
 
-.quiz--description {
+.welcome--description {
   color: #293264;
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   font-weight: 400;
+}
+
+.welcome--start-quiz {
+  width: 12rem;
+  height: 3.25rem;
+}
+
+.quiz {
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.quiz--heading {
+  text-align: left;
+  color: rgb(85, 85, 85);
+  font-family: "Inter", sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  align-self: flex-start;
 }
 
 .btn {
@@ -48,27 +70,22 @@ body {
   font-weight: 500;
   border: none;
   border-radius: 15px;
-  margin-top: 45px;
+  margin-top: 30px;
   cursor: pointer;
 }
 
-.quiz--start {
-  width: 12rem;
-  height: 3.25rem;
-}
-
-.quiz--start:hover {
+.btn:hover {
   scale: 1.1;
   translate: 0px -2px;
   transition: all 0.3s ease-in-out;
 }
 
 .card {
+  width: 100%;
   padding: 32px;
   background: white;
   border: 3px solid rgb(119, 119, 119);
   border-radius: 8px;
-  margin-bottom: 15px;
 }
 
 .card--question {
@@ -90,6 +107,11 @@ body {
   border: 1px solid #4d5b9e;
   border-radius: 8px;
   padding: 8px 16px;
+  color: #293264;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
 }
 
 .card--option:hover {
@@ -98,24 +120,12 @@ body {
   transition: all 0.15s ease-in;
 }
 
-.card--option > label {
-  color: #293264;
-  font-family: "Inter", sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: center;
-}
-
-.card--option > input {
-  display: none;
-}
-
 .card-skeleton {
   padding: 32px;
   border: 3px solid rgb(119, 119, 119);
   border-radius: 8px;
   margin-bottom: 15px;
-  width: 70vw;
+  width: 100%;
 }
 
 .card-skeleton--options > span {
@@ -130,9 +140,10 @@ body {
   flex-basis: 150px;
 }
 
-@media screen and (max-width: 420px) {
-  .card-skeleton,
-  .quiz {
-    width: 90vw;
-  }
+.option-selected {
+  background: #d6dbf5;
+}
+
+.card-selected {
+  background: rgba(0, 0, 0, 0.025);
 }

@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import Card from "./Card";
 import CardSkeleton from "./CardSkeleton";
 
-export default function Game() {
+export default function Quiz() {
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -38,6 +38,16 @@ export default function Game() {
   });
 
   return (
-    <div className="game">{isLoading ? <CardSkeleton /> : cardElements}</div>
+    <div className="quiz">
+      <h1 className="quiz--heading">Quizzical</h1>
+      {isLoading ? (
+        <CardSkeleton />
+      ) : (
+        <>
+          {cardElements}
+          <button className="btn">Check answers</button>
+        </>
+      )}
+    </div>
   );
 }

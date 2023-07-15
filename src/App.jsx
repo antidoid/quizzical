@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Game from "./components/Game";
+import Quiz from "./components/Quiz";
 import "./App.css";
 
 export default function App() {
@@ -10,18 +10,18 @@ export default function App() {
   }
 
   return (
-    <div className="quiz">
+    <main>
       {isPlaying ? (
-        <Game />
+        <Quiz />
       ) : (
-        <>
-          <h1 className="quiz--title">Quizzical</h1>
-          <p className="quiz--description">Let's Play</p>
-          <button className="quiz--start btn" onClick={loadNewGame}>
+        <div className="welcome">
+          <h1 className="welcome--title">Quizzical</h1>
+          <p className="welcome--description">Let's Play</p>
+          <button className="welcome--start-quiz btn" onClick={loadNewGame}>
             Start quiz
           </button>
-        </>
+        </div>
       )}
-    </div>
+    </main>
   );
 }
