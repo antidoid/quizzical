@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
-import he from "he";
 import Card from "./Card";
+import CardSkeleton from "./CardSkeleton";
 
-export default function Game(props) {
+export default function Game() {
   const [cards, setCards] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchQuestions() {
@@ -20,6 +21,7 @@ export default function Game(props) {
       });
 
       setCards(cardsData);
+      setIsLoading(false);
     }
     fetchQuestions();
   }, []);
@@ -35,5 +37,7 @@ export default function Game(props) {
     );
   });
 
-  return <div className="game">{cardElements}</div>;
+  return (
+    <div className="game">{isLoading ? <CardSkeleton /> : cardElements}</div>
+  );
 }

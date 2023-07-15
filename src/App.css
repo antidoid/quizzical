@@ -16,7 +16,7 @@ body {
 }
 
 .quiz {
-  width: 75%;
+  width: 70vw;
   margin: 20px auto;
   display: flex;
   flex-direction: column;
@@ -74,7 +74,7 @@ body {
 .card--question {
   color: rgb(77, 91, 158);
   font-family: "Karla", sans-serif;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 16px;
   line-height: 150%;
@@ -82,10 +82,8 @@ body {
 
 .card--options {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   gap: 16px;
-  width: 70%;
 }
 
 .card--option {
@@ -97,6 +95,7 @@ body {
 .card--option:hover {
   box-shadow: rgb(77, 91, 158) 0px 0px 8px;
   cursor: pointer;
+  transition: all 0.15s ease-in;
 }
 
 .card--option > label {
@@ -109,4 +108,31 @@ body {
 
 .card--option > input {
   display: none;
+}
+
+.card-skeleton {
+  padding: 32px;
+  border: 3px solid rgb(119, 119, 119);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  width: 70vw;
+}
+
+.card-skeleton--options > span {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.card-skeleton--options > span > span {
+  flex-basis: 150px;
+}
+
+@media screen and (max-width: 420px) {
+  .card-skeleton,
+  .quiz {
+    width: 90vw;
+  }
 }
