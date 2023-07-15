@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
+import he from "he";
 import Card from "./Card";
 
 export default function Game(props) {

@@ -1,12 +1,14 @@
 import { nanoid } from "nanoid";
+import he from "he";
 
 export default function Card(props) {
   // generate random order of options
   const randomIndex = Math.floor(Math.random() * 4);
   const options = [...props.incorrectAnswers];
   options.splice(randomIndex, 0, props.answer);
+  const decodedOptions = options.map((option) => he.decode(option));
 
-  const optionElements = options.map((option, index) => {
+  const optionElements = decodedOptions.map((option, index) => {
     return (
       <div className="card--option" key={nanoid()}>
         <input
@@ -22,7 +24,7 @@ export default function Card(props) {
 
   return (
     <div className="card">
-      <p className="card--question">{props.question}</p>
+      <p className="card--question">{he.decode(props.question)}</p>
       <div className="card--options">{optionElements}</div>
     </div>
   );
