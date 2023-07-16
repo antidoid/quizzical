@@ -147,3 +147,37 @@ main {
 .card-selected {
   background: rgba(0, 0, 0, 0.025);
 }
+
+.result {
+  background: rgba(255, 176, 4, 0.15);
+}
+
+.result--heading {
+  color: #555;
+  font-family: Inter, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 150%;
+  margin-bottom: 32px;
+}
+
+.result--score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result--score > p {
+  color: #555;
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.result--score span {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 2px solid #777;
+  background: #fff;
+  margin-left: 8px;
+}

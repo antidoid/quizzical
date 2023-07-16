@@ -8,6 +8,7 @@ export default function Quiz() {
   const [isLoading, setIsLoading] = useState(true);
   const [isQuizOver, setIsQuizOver] = useState(false);
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
+  const [newQuiz, setNewQuiz] = useState(false);
 
   useEffect(() => {
     async function fetchQuestions() {
@@ -27,7 +28,13 @@ export default function Quiz() {
       setIsLoading(false);
     }
     fetchQuestions();
-  }, []);
+  }, [newQuiz]);
+
+  function startNewGame() {
+    setNewQuiz((prev) => !prev);
+    setIsLoading(true);
+    setIsQuizOver(false);
+  }
 
   function handleCorrectAnswer() {
     setCorrectAnswerCount((prevCount) => prevCount + 1);
@@ -46,6 +53,11 @@ export default function Quiz() {
     );
   });
 
+  function checkAnswer() {
+    setIsQuizOver(true);
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }
+
   return (
     <div className="quiz">
       <h1 className="quiz--heading">Quizzical</h1>
@@ -53,13 +65,29 @@ export default function Quiz() {
         <CardSkeleton />
       ) : (
         <>
-          {cardElements}
           {isQuizOver && (
-            <p>You scored {correctAnswerCount}/10 correct answers</p>
+            <div className="result card">
+              <div className="result--heading">The quiz is finished!</div>
+              <div className="result--score">
+                <p>
+                  Correct answers:<span>{correctAnswerCount} / 10</span>
+                </p>
+                <button
+                  className="btn"
+                  style={{ margin: 0 }}
+                  onClick={startNewGame}
+                >
+                  Start New Game
+                </button>
+              </div>
+            </div>
           )}
-          <button className="btn" onClick={() => setIsQuizOver(true)}>
-            Check answers
-          </button>
+          {cardElements}
+          {!isQuizOver && (
+            <button className="btn" onClick={checkAnswer}>
+              Check answers
+            </button>
+          )}
         </>
       )}
     </div>
