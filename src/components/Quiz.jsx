@@ -6,6 +6,8 @@ import CardSkeleton from "./CardSkeleton";
 export default function Quiz() {
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isQuizOver, setIsQuizOver] = useState(false);
+  const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
 
   useEffect(() => {
     async function fetchQuestions() {
@@ -14,6 +16,7 @@ export default function Quiz() {
 
       const cardsData = data.results.map((card) => {
         return {
+          id: nanoid(),
           question: card.question,
           answer: card.correct_answer,
           incorrectAnswers: card.incorrect_answers,
@@ -26,13 +29,19 @@ export default function Quiz() {
     fetchQuestions();
   }, []);
 
+  function handleCorrectAnswer() {
+    setCorrectAnswerCount((prevCount) => prevCount + 1);
+  }
+
   const cardElements = cards.map((card) => {
     return (
       <Card
-        key={nanoid()}
+        key={card.id}
         question={card.question}
         answer={card.answer}
         incorrectAnswers={card.incorrectAnswers}
+        isQuizOver={isQuizOver}
+        handleCorrectAnswer={handleCorrectAnswer}
       />
     );
   });
@@ -45,7 +54,12 @@ export default function Quiz() {
       ) : (
         <>
           {cardElements}
-          <button className="btn">Check answers</button>
+          {isQuizOver && (
+            <p>You scored {correctAnswerCount}/10 correct answers</p>
+          )}
+          <button className="btn" onClick={() => setIsQuizOver(true)}>
+            Check answers
+          </button>
         </>
       )}
     </div>
