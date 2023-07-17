@@ -13,7 +13,9 @@ export default function Quiz() {
 
   useEffect(() => {
     async function fetchQuestions() {
-      const res = await fetch(import.meta.env.VITE_API_URL);
+      const res = await fetch(
+        "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
+      );
       const data = await res.json();
 
       const cardsData = data.results.map((card) => {
@@ -36,7 +38,7 @@ export default function Quiz() {
     setIsLoading(true);
     setIsQuizOver(false);
     setCorrectAnswerCount(0);
-    setIsQuizOver(false)
+    setIsQuizOver(false);
   }
 
   function handleCorrectAnswer() {
