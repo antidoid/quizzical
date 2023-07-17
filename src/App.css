@@ -194,8 +194,18 @@ main {
   opacity: 0.15;
 }
 
+.correct-card {
+  background: rgba(148, 215, 162, 0.35);
+  pointer-events: none;
+}
+
 .correct-option {
   background: rgb(148, 215, 162);
+}
+
+.incorrect-card {
+  background: rgba(247, 217, 219, 0.35);
+  pointer-events: none;
 }
 
 .incorrect-option {

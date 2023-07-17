@@ -37,7 +37,12 @@ export default function Card(props) {
   });
 
   return (
-    <div className={`card ${userChoice && "card-selected"} `}>
+    <div
+      className={`card ${userChoice && "card-selected"} 
+        ${props.isQuizOver &&
+        (userChoice === props.answer ? "correct-card" : "incorrect-card")
+        }`}
+    >
       <p className="card--question">{props.question}</p>
       <div className="card--options">{optionElements}</div>
     </div>
