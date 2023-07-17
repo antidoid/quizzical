@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
+import Option from "./Option";
 
 export default function Card(props) {
   const [userChoice, setUserChoice] = useState(null);
@@ -10,11 +11,10 @@ export default function Card(props) {
     const randomIndex = Math.floor(Math.random() * 4);
     const options = [...props.incorrectAnswers];
     options.splice(randomIndex, 0, props.answer);
-    const decodedOptions = options.map((option) => ({
+    return options.map((option) => ({
       id: nanoid(),
       value: option,
     }));
-    return decodedOptions;
   }
 
   useEffect(() => {
@@ -25,20 +25,14 @@ export default function Card(props) {
 
   const optionElements = options.map((option) => {
     return (
-      <div
+      <Option
         key={option.id}
-        className={`card--option 
-          ${userChoice === option.value && "option-selected"}
-          ${props.isQuizOver &&
-          (option.value === props.answer
-            ? "correct-option"
-            : userChoice === option.value && "incorrect-option")
-          }
-        `}
-        onClick={() => setUserChoice(option.value)}
-      >
-        {option.value}
-      </div>
+        value={option.value}
+        answer={props.answer}
+        userChoice={userChoice}
+        setUserChoice={setUserChoice}
+        isQuizOver={props.isQuizOver}
+      />
     );
   });
 
