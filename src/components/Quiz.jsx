@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
+import he from "he";
 import Card from "./Card";
 import CardSkeleton from "./CardSkeleton";
 
@@ -18,9 +19,9 @@ export default function Quiz() {
       const cardsData = data.results.map((card) => {
         return {
           id: nanoid(),
-          question: card.question,
-          answer: card.correct_answer,
-          incorrectAnswers: card.incorrect_answers,
+          question: he.decode(card.question),
+          answer: he.decode(card.correct_answer),
+          incorrectAnswers: card.incorrect_answers.map((i) => he.decode(i)),
         };
       });
 
@@ -34,6 +35,8 @@ export default function Quiz() {
     setNewQuiz((prev) => !prev);
     setIsLoading(true);
     setIsQuizOver(false);
+    setCorrectAnswerCount(0);
+    setIsQuizOver(false)
   }
 
   function handleCorrectAnswer() {
