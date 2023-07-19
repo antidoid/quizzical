@@ -3,8 +3,7 @@ A quiz app using the Open Trivia DB and React
 ![quiz](https://github.com/antidoid/quizzical/assets/65072631/3c147418-36e4-4078-8c07-686882212aff)
 
 ## 🎦Here is a sample video of how the website works
-https://github.com/antidoid/quizzical/assets/65072631/a199cd07-1ce4-435f-84bf-9c7f08318712
-
+https://github.com/antidoid/quizzical/assets/65072631/9d51716a-fb97-451d-8cb4-4ca7e7775ab0
 
 ## ℹ️About
 * This is a solo challenge "Quizzical" from Scrimba React Course ([Link](https://scrimba.com/learn/learnreact/react-section-4-solo-project-co24f49bea8aace7c174082c8))
